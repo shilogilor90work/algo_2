@@ -38,7 +38,6 @@ class Graph {
     void DFSUtil(int v, boolean[] visited) {
         // Mark the current node as visited and print it
         visited[v] = true;
-        // System.out.print(v+" ");
         connected_size++;
         // Recur for all the vertices
         // adjacent to this vertex
@@ -50,18 +49,15 @@ class Graph {
     void connectedComponents() {
         // Mark all the vertices as not visited
         boolean[] visited = new boolean[V];
-        // int counter = 0;
         for(int v = 0; v < V; ++v) {
           connected_size = 0;
             if(!visited[v]) {
-                // print all reachable vertices
+                // go through all reachable vertices
                 // from v
                 DFSUtil(v,visited);
                 System.out.println(connected_size);
-                // counter++;
             }
         }
-        // return counter;
     }
 
 
@@ -71,13 +67,17 @@ class connected_components
   // Driver program to test above
   public static void main(String[] args){
       // Create a graph given in the above diagram
-      Graph g = new Graph(5); // 5 vertices numbered from 0 to 4
+      Graph g = new Graph(8); // 8 vertices numbered from 0 to 7
 
-      g.addEdge(1, 0);
-      g.addEdge(2, 3);
-      // g.addEdge(3, 4);
+      g.addEdge(1, 2);
+      g.addEdge(1, 3);
       g.addEdge(1, 4);
-      // g.addEdge(0, 4);
+      g.addEdge(2, 3);
+      g.addEdge(3, 4);
+      g.addEdge(5, 6);
+      g.addEdge(5, 7);
+      g.addEdge(6, 7);
+
 
       System.out.println("Following are connected components");
       g.connectedComponents();
